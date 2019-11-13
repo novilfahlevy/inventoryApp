@@ -1,5 +1,5 @@
 # inventoryApp
-Projek Tugas Java Netbeans membuat Manajemen Inventaris Data Produk (Open Source).
+Projek Tugas Java Netbeans membuat Manajemen Inventaris Data Barang (Open Source).
 
 ## Dibuat Dengan
 * Bahasa Pemrograman Java
