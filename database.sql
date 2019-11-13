@@ -21,3 +21,10 @@ CREATE TABLE `barang` (
   `id_pemasok` int,
   `id_staff` int
 );
+
+CREATE TABLE `users` (
+  `id` int PRIMARY KEY,
+  `nama_lengkap` text,
+  `email` text.
+  `password` text
+);
