@@ -9,6 +9,6 @@ package Controllers;
  *
  * @author Novil F
  */
-public class BarangController {
+public interface BarangController {
     
 }
