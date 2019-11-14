@@ -13,6 +13,7 @@ CREATE TABLE `staff` (
 
 CREATE TABLE `barang` (
   `id_barang` int PRIMARY KEY,
+  `kode_produk` text,
   `merk` text,
   `id_jenis` int,
   `jumlah` int,
