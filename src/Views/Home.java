@@ -27,21 +27,163 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainPanel = new javax.swing.JPanel();
+        navPanel = new javax.swing.JPanel();
+        textCariBarang = new javax.swing.JTextField();
+        comboBoxFilterCariBarang = new javax.swing.JComboBox();
+        buttonCariBarang = new javax.swing.JButton();
+        labelJudul = new javax.swing.JLabel();
+        buttonHapusBarang = new javax.swing.JButton();
+        buttonEditBarang = new javax.swing.JButton();
+        buttonTambahBarang = new javax.swing.JButton();
+        buttonLogout = new javax.swing.JButton();
+        labelFilterCariBarang = new javax.swing.JLabel();
+        labelDataBarang = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableDataBarang = new javax.swing.JTable();
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1366, Short.MAX_VALUE)
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 602, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+
+        navPanel.setBackground(new java.awt.Color(220, 220, 220));
+
+        textCariBarang.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+
+        comboBoxFilterCariBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kode Produk", "Nama Barang", "Supplier", "Harga", "Quantity", "Staff" }));
+
+        buttonCariBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonCariBarang.setText("Cari Barang");
+
+        labelJudul.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        labelJudul.setText("inventoryApp");
+
+        buttonHapusBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonHapusBarang.setText("Hapus Barang");
+
+        buttonEditBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonEditBarang.setText("Edit Barang");
+
+        buttonTambahBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonTambahBarang.setText("Tambah Barang");
+
+        buttonLogout.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        buttonLogout.setText("Log Out");
+        buttonLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogoutActionPerformed(evt);
+            }
+        });
+
+        labelFilterCariBarang.setText("Berdasarkan :");
+
+        javax.swing.GroupLayout navPanelLayout = new javax.swing.GroupLayout(navPanel);
+        navPanel.setLayout(navPanelLayout);
+        navPanelLayout.setHorizontalGroup(
+            navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(navPanelLayout.createSequentialGroup()
+                        .addComponent(textCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonCariBarang)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelFilterCariBarang)
+                            .addComponent(comboBoxFilterCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonTambahBarang)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonEditBarang)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonHapusBarang))
+                    .addGroup(navPanelLayout.createSequentialGroup()
+                        .addComponent(labelJudul)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        navPanelLayout.setVerticalGroup(
+            navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelJudul, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLogout))
+                .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(navPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textCariBarang)
+                            .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(buttonCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonHapusBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonEditBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonTambahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(navPanelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(labelFilterCariBarang)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxFilterCariBarang)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        labelDataBarang.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelDataBarang.setText("Data Barang");
+
+        tableDataBarang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tableDataBarang);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(navPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDataBarang)
+                .addContainerGap(1220, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(navPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelDataBarang)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +221,19 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCariBarang;
+    private javax.swing.JButton buttonEditBarang;
+    private javax.swing.JButton buttonHapusBarang;
+    private javax.swing.JButton buttonLogout;
+    private javax.swing.JButton buttonTambahBarang;
+    private javax.swing.JComboBox comboBoxFilterCariBarang;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelDataBarang;
+    private javax.swing.JLabel labelFilterCariBarang;
+    private javax.swing.JLabel labelJudul;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel navPanel;
+    private javax.swing.JTable tableDataBarang;
+    private javax.swing.JTextField textCariBarang;
     // End of variables declaration//GEN-END:variables
 }
