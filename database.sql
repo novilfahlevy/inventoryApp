@@ -19,7 +19,9 @@ CREATE TABLE `barang` (
   `jumlah` int,
   `harga` int,
   `id_pemasok` int,
-  `id_staff` int
+  `id_staff` int,
+  `created_at` timestamp,
+  `updated_at` timestamp
 );
 
 CREATE TABLE `users` (
