@@ -27,21 +27,114 @@ public class Register extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelRegister = new javax.swing.JLabel();
+        labelNamaLengkap = new javax.swing.JLabel();
+        textNamaLengkap = new javax.swing.JTextField();
+        labelPassword = new javax.swing.JLabel();
+        textPassword = new javax.swing.JPasswordField();
+        buttonRegister = new javax.swing.JButton();
+        buttonLogin = new javax.swing.JButton();
+        textEmail1 = new javax.swing.JTextField();
+        labelEmail1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        labelRegister.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        labelRegister.setText("Register");
+
+        labelNamaLengkap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelNamaLengkap.setText("Nama Lengkap");
+
+        textNamaLengkap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textNamaLengkapActionPerformed(evt);
+            }
+        });
+
+        labelPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelPassword.setText("Password");
+
+        buttonRegister.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttonRegister.setText("Register");
+        buttonRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegisterActionPerformed(evt);
+            }
+        });
+
+        buttonLogin.setText("Login");
+
+        textEmail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textEmail1ActionPerformed(evt);
+            }
+        });
+
+        labelEmail1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelEmail1.setText("Email");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 158, Short.MAX_VALUE)
+                .addComponent(labelRegister)
+                .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textNamaLengkap)
+                    .addComponent(textPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textEmail1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonLogin)
+                            .addComponent(labelNamaLengkap)
+                            .addComponent(labelPassword)
+                            .addComponent(labelEmail1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelRegister)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelNamaLengkap)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textNamaLengkap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelEmail1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buttonRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(buttonLogin)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textNamaLengkapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNamaLengkapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textNamaLengkapActionPerformed
+
+    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRegisterActionPerformed
+
+    private void textEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEmail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textEmail1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +172,14 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonLogin;
+    private javax.swing.JButton buttonRegister;
+    private javax.swing.JLabel labelEmail1;
+    private javax.swing.JLabel labelNamaLengkap;
+    private javax.swing.JLabel labelPassword;
+    private javax.swing.JLabel labelRegister;
+    private javax.swing.JTextField textEmail1;
+    private javax.swing.JTextField textNamaLengkap;
+    private javax.swing.JPasswordField textPassword;
     // End of variables declaration//GEN-END:variables
 }
