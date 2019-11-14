@@ -5,17 +5,23 @@
  */
 package Views;
 
+import javax.swing.table.DefaultTableModel;
+import Controllers.BarangController;
+
 /**
  *
  * @author Novil F
  */
 public class Home extends javax.swing.JFrame {
+    
+    BarangController controller = new BarangController();
 
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
+        controller.setKolomTabelBarang(this);
     }
 
     /**
@@ -220,6 +226,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
+    
+    public DefaultTableModel tabelModel; 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCariBarang;
@@ -228,13 +236,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton buttonLogout;
     private javax.swing.JButton buttonTambahBarang;
     private javax.swing.JComboBox comboBoxFilterCariBarang;
-    private javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDataBarang;
     private javax.swing.JLabel labelFilterCariBarang;
     private javax.swing.JLabel labelJudul;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel navPanel;
-    private javax.swing.JTable tableDataBarang;
+    public javax.swing.JTable tableDataBarang;
     private javax.swing.JTextField textCariBarang;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,5 +10,5 @@ package Models;
  * @author Novil F
  */
 public class BarangModel {
-    
+    public 
 }
