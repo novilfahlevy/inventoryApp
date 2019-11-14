@@ -27,7 +27,7 @@ CREATE TABLE `barang` (
 CREATE TABLE `users` (
   `id` int PRIMARY KEY,
   `nama_lengkap` text,
-  `email` text.
+  `email` text,
   `password` text
 );
 
