@@ -8,6 +8,7 @@ package Controllers;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import Views.Home;
+import Views.EditBarang;
 import Models.BarangModel;
 import javax.swing.JOptionPane;
 
@@ -56,6 +57,27 @@ public class BarangController {
             }
         } catch( Exception ex ) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void tampilInfoBarang(EditBarang form) {
+        ResultSet data = model.getDataBarangByKodeBarang(form.comboBoxKodeBarang.getSelectedItem().toString());
+        try {
+            if( data.next() ) {
+                form.textMerkBarang.setText(data.getString("merk"));
+                form.comboBoxPemasok.setSelectedItem(data.getString("pemasok"));
+                form.spinnerJumlah.setValue(data.getInt("jumlah"));
+                form.spinnerHarga.setValue(data.getInt("harga"));
+                form.comboBoxStaff.setSelectedItem(data.getString("staff"));
+            } else {
+                form.textMerkBarang.setText("");
+                form.comboBoxPemasok.setSelectedItem("");
+                form.spinnerJumlah.setValue("");
+                form.spinnerHarga.setValue("");
+                form.comboBoxStaff.setSelectedItem("");
+            }
+        } catch( Exception ex ) {
+            
         }
     }
 }
