@@ -12,7 +12,7 @@ import java.sql.*;
  * @author Novil F
  */
 public class Koneksi {
-    public Connection getKoneksi() {
+    public static Connection getKoneksi() {
         Connection con = null;
 
         try {

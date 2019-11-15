@@ -21,7 +21,9 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        
         controller.setKolomTabelBarang(this);
+        controller.tampilDataBarang(this);
     }
 
     /**
