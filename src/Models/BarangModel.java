@@ -50,4 +50,35 @@ public class BarangModel {
         
         return result;
     }
+    
+    public boolean edit(String[] dataBarang) {
+        boolean editSuccess = false;
+        
+        String query = "UPDATE `barang` SET ";
+        
+        query += "merk = ?, ";
+        query += "id_pemasok = (SELECT id FROM `pemasok` WHERE nama = ?), ";
+        query += "jumlah = ?, ";
+        query += "harga = ?, ";
+        query += "id_jenis = (SELECT id FROM `jenis_barang` WHERE nama = ?), ";
+        query += "id_staff = (SELECT id FROM `staff` WHERE nama = ?) WHERE kode_barang = ?";
+        
+        try {
+            PreparedStatement ps = Koneksi.getKoneksi().prepareStatement(query);
+            
+            ps.setString(1, dataBarang[0]);
+            ps.setString(2, dataBarang[1]);
+            ps.setString(3, dataBarang[2]);
+            ps.setString(4, dataBarang[3]);
+            ps.setString(5, dataBarang[4]);
+            ps.setString(6, dataBarang[5]);
+            ps.setString(7, dataBarang[6]);
+            
+            editSuccess = ps.executeUpdate() > 0;
+        } catch( SQLException ex ) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        return editSuccess;
+    }
 }

@@ -6,6 +6,7 @@
 package Views;
 
 import Controllers.BarangController;
+import Views.Home;
 
 /**
  *
@@ -14,14 +15,20 @@ import Controllers.BarangController;
 public class EditBarang extends javax.swing.JFrame {
     
     BarangController controller = new BarangController();
+    static Home home;
 
     /**
      * Creates new form TambahBarang
      */
-    public EditBarang() {
+    public EditBarang(Home homeForm) {
+        home = homeForm;
+        
         initComponents();
         
         controller.tampilKodeBarang(this);
+        controller.tampilPemasok(this);
+        controller.tampilStaff(this);
+        controller.tampilJenis(this);
     }
 
     /**
@@ -40,14 +47,16 @@ public class EditBarang extends javax.swing.JFrame {
         spinnerJumlah = new javax.swing.JSpinner();
         spinnerHarga = new javax.swing.JSpinner();
         labelHarga = new javax.swing.JLabel();
-        comboBoxStaff = new javax.swing.JComboBox();
-        labelStaff = new javax.swing.JLabel();
+        comboBoxJenis = new javax.swing.JComboBox();
+        labelJenis = new javax.swing.JLabel();
         buttonEditBarang = new javax.swing.JButton();
         buttonBatal = new javax.swing.JButton();
         labelKodeBarang = new javax.swing.JLabel();
         textMerkBarang = new javax.swing.JTextField();
         comboBoxPemasok = new javax.swing.JComboBox();
         labelPemasok = new javax.swing.JLabel();
+        comboBoxStaff = new javax.swing.JComboBox();
+        labelStaf = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +66,7 @@ public class EditBarang extends javax.swing.JFrame {
         labelMerkBarang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelMerkBarang.setText("Nama / Merk");
 
+        comboBoxKodeBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pilih barang (kode) yang ingin diubah..." }));
         comboBoxKodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxKodeBarangActionPerformed(evt);
@@ -69,10 +79,8 @@ public class EditBarang extends javax.swing.JFrame {
         labelHarga.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelHarga.setText("Harga");
 
-        comboBoxStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Eddy Gunawan", "Rafi Akbar", "Haikal Mahardika" }));
-
-        labelStaff.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labelStaff.setText("Staff");
+        labelJenis.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelJenis.setText("Jenis");
 
         buttonEditBarang.setText("Edit");
         buttonEditBarang.addActionListener(new java.awt.event.ActionListener() {
@@ -82,14 +90,20 @@ public class EditBarang extends javax.swing.JFrame {
         });
 
         buttonBatal.setText("Batal");
+        buttonBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBatalActionPerformed(evt);
+            }
+        });
 
         labelKodeBarang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelKodeBarang.setText("Kode Barang");
 
-        comboBoxPemasok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PT. Gunajaya", "PT. Makmur Mahakam", "PT. Bursa Borneo" }));
-
         labelPemasok.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelPemasok.setText("Pemasok");
+
+        labelStaf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelStaf.setText("Staff");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +112,7 @@ public class EditBarang extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboBoxStaff, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBoxJenis, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(spinnerHarga, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(spinnerJumlah, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -115,11 +129,13 @@ public class EditBarang extends javax.swing.JFrame {
                             .addComponent(labelMerkBarang)
                             .addComponent(labelJumlah)
                             .addComponent(labelHarga)
-                            .addComponent(labelStaff)
+                            .addComponent(labelJenis)
                             .addComponent(labelKodeBarang)
-                            .addComponent(labelPemasok))
+                            .addComponent(labelPemasok)
+                            .addComponent(labelStaf))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(comboBoxKodeBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboBoxKodeBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBoxStaff, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,7 +143,7 @@ public class EditBarang extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelJudul)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelKodeBarang)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxKodeBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +164,11 @@ public class EditBarang extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(spinnerHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(labelStaff)
+                .addComponent(labelJenis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelStaf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBoxStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -163,13 +183,18 @@ public class EditBarang extends javax.swing.JFrame {
 
     private void buttonEditBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditBarangActionPerformed
         // TODO add your handling code here:
-        
+        controller.editBarang(this, home);
     }//GEN-LAST:event_buttonEditBarangActionPerformed
 
     private void comboBoxKodeBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxKodeBarangActionPerformed
         // TODO add your handling code here:
         controller.tampilInfoBarang(this);
     }//GEN-LAST:event_comboBoxKodeBarangActionPerformed
+
+    private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_buttonBatalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,7 +227,7 @@ public class EditBarang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditBarang().setVisible(true);
+                new EditBarang(home).setVisible(true);
             }
         });
     }
@@ -210,16 +235,18 @@ public class EditBarang extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBatal;
     private javax.swing.JButton buttonEditBarang;
+    public javax.swing.JComboBox comboBoxJenis;
     public javax.swing.JComboBox comboBoxKodeBarang;
     public javax.swing.JComboBox comboBoxPemasok;
     public javax.swing.JComboBox comboBoxStaff;
     private javax.swing.JLabel labelHarga;
+    private javax.swing.JLabel labelJenis;
     private javax.swing.JLabel labelJudul;
     private javax.swing.JLabel labelJumlah;
     private javax.swing.JLabel labelKodeBarang;
     private javax.swing.JLabel labelMerkBarang;
     private javax.swing.JLabel labelPemasok;
-    private javax.swing.JLabel labelStaff;
+    private javax.swing.JLabel labelStaf;
     public javax.swing.JSpinner spinnerHarga;
     public javax.swing.JSpinner spinnerJumlah;
     public javax.swing.JTextField textMerkBarang;

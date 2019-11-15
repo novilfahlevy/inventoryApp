@@ -6,11 +6,16 @@
 package Controllers;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+
 import Views.Home;
 import Views.EditBarang;
+
 import Models.BarangModel;
-import javax.swing.JOptionPane;
+import Models.PemasokModel;
+import Models.StaffModel;
+import Models.JenisModel;
 
 /**
  *
@@ -18,7 +23,10 @@ import javax.swing.JOptionPane;
  */
 public class BarangController {
     
-    BarangModel model = new BarangModel();
+    BarangModel modelBarang = new BarangModel();
+    PemasokModel modelPemasok = new PemasokModel();
+    StaffModel modelStaff = new StaffModel();
+    JenisModel modelJenis = new JenisModel();
     
     public void setKolomTabelBarang(Home form) {
         form.tabelModel = new DefaultTableModel();
@@ -26,9 +34,9 @@ public class BarangController {
         form.tabelModel.addColumn("Kode Barang");
         form.tabelModel.addColumn("Nama Barang");
         form.tabelModel.addColumn("Jenis");
-        form.tabelModel.addColumn("Quantity");
+        form.tabelModel.addColumn("Jumlah");
         form.tabelModel.addColumn("Harga");
-        form.tabelModel.addColumn("Supplier");
+        form.tabelModel.addColumn("Pemasok");
         form.tabelModel.addColumn("Staff");
         form.tabelModel.addColumn("Ditambahkan Saat");
         
@@ -40,7 +48,7 @@ public class BarangController {
         form.tabelModel.fireTableDataChanged();
         
         try {
-            ResultSet data = model.getDataBarang();
+            ResultSet data = modelBarang.getDataBarang();
         
             while( data.next() ) {
                 Object[] obj = new Object[8];
@@ -61,7 +69,7 @@ public class BarangController {
     }
     
     public void tampilKodeBarang(EditBarang form) {
-        ResultSet data = model.getDataBarang();
+        ResultSet data = modelBarang.getDataBarang();
         try {
             while( data.next() ) {
                 form.comboBoxKodeBarang.addItem(data.getString("kode_barang"));
@@ -71,24 +79,79 @@ public class BarangController {
         }
     }
     
+    public void tampilPemasok(EditBarang form) {
+        ResultSet data = modelPemasok.getDataPemasok();
+        try {
+            while( data.next() ) {
+                form.comboBoxPemasok.addItem(data.getString("nama"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
+    public void tampilJenis(EditBarang form) {
+        ResultSet data = modelJenis.getDataJenis();
+        try {
+            while( data.next() ) {
+                form.comboBoxJenis.addItem(data.getString("nama"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
+    public void tampilStaff(EditBarang form) {
+        ResultSet data = modelStaff.getDataStaff();
+        try {
+            while( data.next() ) {
+                form.comboBoxStaff.addItem(data.getString("nama"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
     public void tampilInfoBarang(EditBarang form) {
-        ResultSet data = model.getDataBarangByKodeBarang(form.comboBoxKodeBarang.getSelectedItem().toString());
+        ResultSet data = modelBarang.getDataBarangByKodeBarang(form.comboBoxKodeBarang.getSelectedItem().toString());
         try {
             if( data.next() ) {
                 form.textMerkBarang.setText(data.getString("merk"));
                 form.comboBoxPemasok.setSelectedItem(data.getString("pemasok"));
                 form.spinnerJumlah.setValue(data.getInt("jumlah"));
                 form.spinnerHarga.setValue(data.getInt("harga"));
-                form.comboBoxStaff.setSelectedItem(data.getString("staff"));
+                form.comboBoxJenis.setSelectedItem(data.getString("jenis"));
+                form.comboBoxJenis.setSelectedItem(data.getString("staff"));
             } else {
                 form.textMerkBarang.setText("");
-                form.comboBoxPemasok.setSelectedItem("");
-                form.spinnerJumlah.setValue("");
-                form.spinnerHarga.setValue("");
-                form.comboBoxStaff.setSelectedItem("");
+                form.comboBoxPemasok.setSelectedIndex(0);
+                form.spinnerJumlah.setValue(0);
+                form.spinnerHarga.setValue(0);
+                form.comboBoxJenis.setSelectedIndex(0);
+                form.comboBoxJenis.setSelectedIndex(0);
             }
         } catch( Exception ex ) {
             
         }
+    }
+    
+    public void editBarang(EditBarang form, Home home) {
+        String[] dataBarang = {
+            form.textMerkBarang.getText(),
+            form.comboBoxPemasok.getSelectedItem().toString(),
+            form.spinnerJumlah.getValue().toString(),
+            form.spinnerHarga.getValue().toString(),
+            form.comboBoxJenis.getSelectedItem().toString(),
+            form.comboBoxStaff.getSelectedItem().toString(),
+            form.comboBoxKodeBarang.getSelectedItem().toString()
+        };
+        
+        if( modelBarang.edit(dataBarang) ) {
+            JOptionPane.showMessageDialog(form, "Data berhasil diubah.");
+            tampilDataBarang(home);
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(form, "Gagal mengubah data.");
     }
 }

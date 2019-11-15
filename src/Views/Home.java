@@ -7,6 +7,7 @@ package Views;
 
 import javax.swing.table.DefaultTableModel;
 import Controllers.BarangController;
+import Views.EditBarang;
 
 /**
  *
@@ -201,6 +202,7 @@ public class Home extends javax.swing.JFrame {
 
     private void buttonEditBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditBarangActionPerformed
         // TODO add your handling code here:
+        new EditBarang(this).setVisible(true);
     }//GEN-LAST:event_buttonEditBarangActionPerformed
 
     /**
