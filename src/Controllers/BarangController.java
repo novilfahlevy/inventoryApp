@@ -60,6 +60,17 @@ public class BarangController {
         }
     }
     
+    public void tampilKodeBarang(EditBarang form) {
+        ResultSet data = model.getDataBarang();
+        try {
+            while( data.next() ) {
+                form.comboBoxKodeBarang.addItem(data.getString("kode_barang"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
     public void tampilInfoBarang(EditBarang form) {
         ResultSet data = model.getDataBarangByKodeBarang(form.comboBoxKodeBarang.getSelectedItem().toString());
         try {

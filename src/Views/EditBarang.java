@@ -20,6 +20,8 @@ public class EditBarang extends javax.swing.JFrame {
      */
     public EditBarang() {
         initComponents();
+        
+        controller.tampilKodeBarang(this);
     }
 
     /**
@@ -55,7 +57,6 @@ public class EditBarang extends javax.swing.JFrame {
         labelMerkBarang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labelMerkBarang.setText("Nama / Merk");
 
-        comboBoxKodeBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "KB1", "KB2", "KB3" }));
         comboBoxKodeBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxKodeBarangActionPerformed(evt);
