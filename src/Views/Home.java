@@ -82,6 +82,11 @@ public class Home extends javax.swing.JFrame {
 
         buttonEditBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonEditBarang.setText("Edit Barang");
+        buttonEditBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditBarangActionPerformed(evt);
+            }
+        });
 
         buttonTambahBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonTambahBarang.setText("Tambah Barang");
@@ -193,6 +198,10 @@ public class Home extends javax.swing.JFrame {
     private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonLogoutActionPerformed
+
+    private void buttonEditBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditBarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonEditBarangActionPerformed
 
     /**
      * @param args the command line arguments
