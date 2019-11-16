@@ -70,10 +70,15 @@ public class Home extends javax.swing.JFrame {
 
         textCariBarang.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        comboBoxFilterCariBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kode Produk", "Nama Barang", "Supplier", "Harga", "Quantity", "Staff" }));
+        comboBoxFilterCariBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kode Barang", "Nama / Merk", "Pemasok", "Harga", "Jumlah", "Staff" }));
 
         buttonCariBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonCariBarang.setText("Cari Barang");
+        buttonCariBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCariBarangActionPerformed(evt);
+            }
+        });
 
         labelJudul.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
         labelJudul.setText("inventoryApp");
@@ -205,6 +210,11 @@ public class Home extends javax.swing.JFrame {
         new EditBarang(this).setVisible(true);
     }//GEN-LAST:event_buttonEditBarangActionPerformed
 
+    private void buttonCariBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariBarangActionPerformed
+        // TODO add your handling code here:
+        controller.cariBarang(this);
+    }//GEN-LAST:event_buttonCariBarangActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,7 +258,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton buttonHapusBarang;
     private javax.swing.JButton buttonLogout;
     private javax.swing.JButton buttonTambahBarang;
-    private javax.swing.JComboBox comboBoxFilterCariBarang;
+    public javax.swing.JComboBox comboBoxFilterCariBarang;
     public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDataBarang;
     private javax.swing.JLabel labelFilterCariBarang;
@@ -256,6 +266,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel navPanel;
     public javax.swing.JTable tableDataBarang;
-    private javax.swing.JTextField textCariBarang;
+    public javax.swing.JTextField textCariBarang;
     // End of variables declaration//GEN-END:variables
 }
