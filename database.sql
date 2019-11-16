@@ -112,7 +112,7 @@ INSERT INTO `staff` (`id`, `nama`, `bidang`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_lengkap` text,
   `email` text,
   `password` text
