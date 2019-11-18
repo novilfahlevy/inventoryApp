@@ -7,6 +7,7 @@ package Models;
 
 import java.sql.*;
 import Database.Koneksi;
+import Views.TambahBarang;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,21 +15,22 @@ import javax.swing.JOptionPane;
  * @author Novil F
  */
 public class BarangModel {
+
     public ResultSet getDataBarang() {
         ResultSet result = null;
-        
+
         String query = "SELECT `barang`.kode_barang, `barang`.merk, `jenis_barang`.nama AS jenis, `barang`.jumlah, `barang`.harga, `pemasok`.nama AS pemasok, `staff`.nama AS staff, DATE_FORMAT(`barang`.created_at, '%d/%m/%Y') AS created_at FROM `barang`, `jenis_barang`, `pemasok`, `staff`";
-        
+
         query += " WHERE `jenis_barang`.id = `barang`.id_jenis AND";
         query += " `pemasok`.id = `barang`.id_pemasok AND";
         query += " `staff`.id = `barang`.id_staff";
-        
+
         try {
             result = (ResultSet) Koneksi.getKoneksi().createStatement().executeQuery(query);
-        } catch( SQLException ex ) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
+
         return result;
     }
     
@@ -128,5 +130,44 @@ public class BarangModel {
         }
         
         return editSuccess;
+    }
+
+    public boolean tambahDataBarang(String[] data) {
+        boolean tambahDataSuccess = false;
+        String kodeBarang = "KB1";
+        
+        try {
+            String query = "SELECT MAX(id_barang) AS id FROM `barang`";
+            PreparedStatement stmt = Koneksi.getKoneksi().prepareStatement(query);
+            ResultSet result = stmt.executeQuery();
+            
+            if( result.next() ) {
+                kodeBarang = "KB" + String.valueOf(result.getInt("id") + 1);
+            }
+        } catch( SQLException ex ) {
+            
+        }
+        
+        try {
+            String query = "INSERT INTO `barang` VALUES (?, ?, ?, (SELECT id FROM `jenis_barang` WHERE nama = ?), ?, ?, (SELECT id FROM `pemasok` WHERE nama = ?), (SELECT id FROM `staff` WHERE nama = ?), ?, ?)";
+            PreparedStatement stmt = Koneksi.getKoneksi().prepareStatement(query);
+            
+            stmt.setString(1, null);
+            stmt.setString(2, kodeBarang);
+            stmt.setString(3, data[0]);
+            stmt.setString(4, data[1]);
+            stmt.setInt(5, Integer.valueOf(data[2]));
+            stmt.setInt(6, Integer.valueOf(data[3]));
+            stmt.setString(7, data[4]);
+            stmt.setString(8, data[5]);
+            stmt.setString(9, null);
+            stmt.setString(10, null);
+
+            tambahDataSuccess = stmt.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        return tambahDataSuccess;
     }
 }

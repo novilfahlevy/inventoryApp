@@ -8,13 +8,14 @@ package Views;
 import javax.swing.table.DefaultTableModel;
 import Controllers.BarangController;
 import Views.EditBarang;
+import Models.BarangModel;
 
 /**
  *
  * @author Novil F
  */
 public class Home extends javax.swing.JFrame {
-    
+
     BarangController controller = new BarangController();
 
     /**
@@ -22,7 +23,7 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
-        
+
         controller.setKolomTabelBarang(this);
         controller.tampilDataBarang(this);
     }
@@ -64,7 +65,6 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         navPanel.setBackground(new java.awt.Color(220, 220, 220));
 
@@ -96,6 +96,11 @@ public class Home extends javax.swing.JFrame {
 
         buttonTambahBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonTambahBarang.setText("Tambah Barang");
+        buttonTambahBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambahBarangActionPerformed(evt);
+            }
+        });
 
         buttonLogout.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         buttonLogout.setText("Log Out");
@@ -205,6 +210,11 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
+    private void buttonTambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahBarangActionPerformed
+        // TODO add your handling code here:
+        TambahBarang tambah = new TambahBarang(this);
+        tambah.setVisible(true);
+    }//GEN-LAST:event_buttonTambahBarangActionPerformed
     private void buttonEditBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditBarangActionPerformed
         // TODO add your handling code here:
         new EditBarang(this).setVisible(true);
@@ -249,8 +259,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
     }
-    
-    public DefaultTableModel tabelModel; 
+
+    public DefaultTableModel tabelModel;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCariBarang;

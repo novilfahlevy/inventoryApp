@@ -11,11 +11,13 @@ import java.sql.ResultSet;
 
 import Views.Home;
 import Views.EditBarang;
+import Views.TambahBarang;
 
 import Models.BarangModel;
 import Models.PemasokModel;
 import Models.StaffModel;
 import Models.JenisModel;
+import java.util.Collection;
 
 /**
  *
@@ -115,6 +117,17 @@ public class BarangController {
         }
     }
     
+    public void tampilPemasok(TambahBarang form) {
+        ResultSet data = modelPemasok.getDataPemasok();
+        try {
+            while( data.next() ) {
+                form.comboBoxPemasok.addItem(data.getString("nama"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
     public void tampilJenis(EditBarang form) {
         ResultSet data = modelJenis.getDataJenis();
         try {
@@ -126,7 +139,29 @@ public class BarangController {
         }
     }
     
+    public void tampilJenis(TambahBarang form) {
+        ResultSet data = modelJenis.getDataJenis();
+        try {
+            while( data.next() ) {
+                form.comboBoxJenis.addItem(data.getString("nama"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
     public void tampilStaff(EditBarang form) {
+        ResultSet data = modelStaff.getDataStaff();
+        try {
+            while( data.next() ) {
+                form.comboBoxStaff.addItem(data.getString("nama"));
+            }
+        } catch( Exception ex ) {
+            
+        }
+    }
+    
+    public void tampilStaff(TambahBarang form) {
         ResultSet data = modelStaff.getDataStaff();
         try {
             while( data.next() ) {
@@ -178,5 +213,45 @@ public class BarangController {
         }
         
         JOptionPane.showMessageDialog(form, "Gagal mengubah data.");
+    }
+    
+    public void tambahBarang(TambahBarang form, Home home) {
+        String[] data = {
+            form.textMerkBarang.getText(),
+            form.comboBoxJenis.getSelectedItem().toString(),
+            form.spinnerJumlah.getValue().toString(),
+            form.spinnerHarga.getValue().toString(),
+            form.comboBoxPemasok.getSelectedItem().toString(),
+            form.comboBoxStaff.getSelectedItem().toString()
+        };
+        
+        if( validasiTambahBarang(data[0], data[2], data[3]) ) {
+            if( modelBarang.tambahDataBarang(data) ) {
+                JOptionPane.showMessageDialog(null, "Barang berhasil ditambah.");
+                tampilDataBarang(home);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal menambah barang.");
+            }
+        }
+        
+    }
+    
+    public boolean validasiTambahBarang(String merk, String harga, String jumlah) {
+        if( merk.equals("") ) {
+            JOptionPane.showMessageDialog(null, "Mohon isi merk barang.");
+            return false;
+        }
+        
+        if( harga.equals("") ) {
+            JOptionPane.showMessageDialog(null, "Mohon isi harga barang.");
+            return false;
+        }
+        
+        if( jumlah.equals("") ) {
+            JOptionPane.showMessageDialog(null, "Mohon isi jumlah barang.");
+            return false;
+        }
+        
+        return true;
     }
 }
