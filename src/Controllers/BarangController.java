@@ -254,4 +254,54 @@ public class BarangController {
         
         return true;
     }
+    
+    public void filterBarangASC(Home form) {
+        form.tabelModel.getDataVector().removeAllElements();
+        form.tabelModel.fireTableDataChanged();
+        
+        try {
+            ResultSet data = modelBarang.getDataBarangFilter(form.comboBoxFilter.getSelectedItem().toString(), "ASC");
+        
+            while( data.next() ) {
+                Object[] obj = new Object[8];
+                obj[0] = data.getString("kode_barang");
+                obj[1] = data.getString("merk");
+                obj[2] = data.getString("jenis");
+                obj[3] = data.getString("jumlah");
+                obj[4] = data.getString("harga");
+                obj[5] = data.getString("pemasok");
+                obj[6] = data.getString("staff");
+                obj[7] = data.getString("created_at");
+
+                form.tabelModel.addRow(obj);
+            }
+        } catch( Exception ex ) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
+    public void filterBarangDESC(Home form) {
+        form.tabelModel.getDataVector().removeAllElements();
+        form.tabelModel.fireTableDataChanged();
+        
+        try {
+            ResultSet data = modelBarang.getDataBarangFilter(form.comboBoxFilter.getSelectedItem().toString(), "DESC");
+        
+            while( data.next() ) {
+                Object[] obj = new Object[8];
+                obj[0] = data.getString("kode_barang");
+                obj[1] = data.getString("merk");
+                obj[2] = data.getString("jenis");
+                obj[3] = data.getString("jumlah");
+                obj[4] = data.getString("harga");
+                obj[5] = data.getString("pemasok");
+                obj[6] = data.getString("staff");
+                obj[7] = data.getString("created_at");
+
+                form.tabelModel.addRow(obj);
+            }
+        } catch( Exception ex ) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
 }

@@ -51,6 +51,9 @@ public class Home extends javax.swing.JFrame {
         labelDataBarang = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDataBarang = new javax.swing.JTable();
+        buttonFilterDESC = new javax.swing.JButton();
+        comboBoxFilter = new javax.swing.JComboBox();
+        buttonFilterASC = new javax.swing.JButton();
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -127,7 +130,7 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(navPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelFilterCariBarang)
                             .addComponent(comboBoxFilterCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                         .addComponent(buttonTambahBarang)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonEditBarang)
@@ -180,6 +183,22 @@ public class Home extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableDataBarang);
 
+        buttonFilterDESC.setText("DESC");
+        buttonFilterDESC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFilterDESCActionPerformed(evt);
+            }
+        });
+
+        comboBoxFilter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harga", "Jumlah" }));
+
+        buttonFilterASC.setText("ASC");
+        buttonFilterASC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonFilterASCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,8 +206,15 @@ public class Home extends javax.swing.JFrame {
             .addComponent(navPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelDataBarang)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelDataBarang)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBoxFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonFilterASC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonFilterDESC))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1325, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 21, Short.MAX_VALUE))
         );
@@ -197,7 +223,12 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(navPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelDataBarang)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelDataBarang)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonFilterDESC)
+                        .addComponent(buttonFilterASC)
+                        .addComponent(comboBoxFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                 .addGap(35, 35, 35))
@@ -224,6 +255,16 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.cariBarang(this);
     }//GEN-LAST:event_buttonCariBarangActionPerformed
+
+    private void buttonFilterASCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFilterASCActionPerformed
+        // TODO add your handling code here:
+        controller.filterBarangASC(this);
+    }//GEN-LAST:event_buttonFilterASCActionPerformed
+
+    private void buttonFilterDESCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFilterDESCActionPerformed
+        // TODO add your handling code here:
+        controller.filterBarangDESC(this);
+    }//GEN-LAST:event_buttonFilterDESCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,9 +306,12 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCariBarang;
     private javax.swing.JButton buttonEditBarang;
+    public javax.swing.JButton buttonFilterASC;
+    public javax.swing.JButton buttonFilterDESC;
     private javax.swing.JButton buttonHapusBarang;
     private javax.swing.JButton buttonLogout;
     private javax.swing.JButton buttonTambahBarang;
+    public javax.swing.JComboBox comboBoxFilter;
     public javax.swing.JComboBox comboBoxFilterCariBarang;
     public javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDataBarang;
