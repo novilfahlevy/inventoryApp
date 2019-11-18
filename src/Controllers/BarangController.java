@@ -196,7 +196,7 @@ public class BarangController {
     }
     
     public void editBarang(EditBarang form, Home home) {
-        String[] dataBarang = {
+        String[] data = {
             form.textMerkBarang.getText(),
             form.comboBoxPemasok.getSelectedItem().toString(),
             form.spinnerJumlah.getValue().toString(),
@@ -206,13 +206,14 @@ public class BarangController {
             form.comboBoxKodeBarang.getSelectedItem().toString()
         };
         
-        if( modelBarang.edit(dataBarang) ) {
-            JOptionPane.showMessageDialog(form, "Data berhasil diubah.");
-            tampilDataBarang(home);
-            return;
+        if( validasiTambahBarang(data[0], data[2], data[3]) ) {
+            if( modelBarang.edit(data) ) {
+                JOptionPane.showMessageDialog(null, "Data barang berhasil diubah.");
+                tampilDataBarang(home);
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal mengubah data barang.");
+            }
         }
-        
-        JOptionPane.showMessageDialog(form, "Gagal mengubah data.");
     }
     
     public void tambahBarang(TambahBarang form, Home home) {
@@ -233,7 +234,6 @@ public class BarangController {
                 JOptionPane.showMessageDialog(null, "Gagal menambah barang.");
             }
         }
-        
     }
     
     public boolean validasiTambahBarang(String merk, String harga, String jumlah) {
