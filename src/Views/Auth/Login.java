@@ -5,11 +5,15 @@
  */
 package Views.Auth;
 
+import Controllers.Auth.LoginController;
+
 /**
  *
  * @author Novil F
  */
 public class Login extends javax.swing.JFrame {
+
+    LoginController controller = new LoginController();
 
     /**
      * Creates new form Login
@@ -61,6 +65,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         buttonRegister.setText("Register");
+        buttonRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,7 +129,14 @@ public class Login extends javax.swing.JFrame {
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
+        controller.login(this);
     }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void buttonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegisterActionPerformed
+        // TODO add your handling code here:
+        new Register().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_buttonRegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +179,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelJudul;
     private javax.swing.JLabel labelPassword;
-    private javax.swing.JTextField textEmail;
-    private javax.swing.JPasswordField textPassword;
+    public javax.swing.JTextField textEmail;
+    public javax.swing.JPasswordField textPassword;
     // End of variables declaration//GEN-END:variables
 }

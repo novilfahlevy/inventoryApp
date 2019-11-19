@@ -5,16 +5,24 @@
  */
 package Views;
 
+import Controllers.BarangController;
+
+import Views.Home;
+
 /**
  *
  * @author Novil F
  */
 public class HapusBarang extends javax.swing.JFrame {
 
+    BarangController controller = new BarangController();
+    static Home homeForm;
+
     /**
      * Creates new form HapusBarang
      */
-    public HapusBarang() {
+    public HapusBarang(Home home) {
+        homeForm = home;
         initComponents();
     }
 
@@ -29,7 +37,7 @@ public class HapusBarang extends javax.swing.JFrame {
 
         labelJudul = new javax.swing.JLabel();
         labelKodeProduk = new javax.swing.JLabel();
-        textMerkBarang1 = new javax.swing.JTextField();
+        textKodeBarang = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         buttonBatal = new javax.swing.JButton();
         buttonHapusBarang = new javax.swing.JButton();
@@ -52,6 +60,11 @@ public class HapusBarang extends javax.swing.JFrame {
         });
 
         buttonHapusBarang.setText("Hapus");
+        buttonHapusBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHapusBarangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,7 +84,7 @@ public class HapusBarang extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textMerkBarang1)
+                            .addComponent(textKodeBarang)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -87,7 +100,7 @@ public class HapusBarang extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(labelKodeProduk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textMerkBarang1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textKodeBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -102,7 +115,13 @@ public class HapusBarang extends javax.swing.JFrame {
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_buttonBatalActionPerformed
+
+    private void buttonHapusBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusBarangActionPerformed
+        // TODO add your handling code here:
+        controller.hapusBarang(this, homeForm);
+    }//GEN-LAST:event_buttonHapusBarangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,7 +153,7 @@ public class HapusBarang extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HapusBarang().setVisible(true);
+                new HapusBarang(homeForm).setVisible(true);
             }
         });
     }
@@ -145,6 +164,6 @@ public class HapusBarang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelJudul;
     private javax.swing.JLabel labelKodeProduk;
-    private javax.swing.JTextField textMerkBarang1;
+    public javax.swing.JTextField textKodeBarang;
     // End of variables declaration//GEN-END:variables
 }

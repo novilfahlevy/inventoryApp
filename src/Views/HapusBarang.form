@@ -41,7 +41,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="textMerkBarang1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="textKodeBarang" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="0" pref="480" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="buttonBatal" min="-2" pref="150" max="-2" attributes="0"/>
@@ -63,7 +63,7 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="labelKodeProduk" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="textMerkBarang1" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="textKodeBarang" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -93,7 +93,10 @@
         <Property name="text" type="java.lang.String" value="Kode Produk"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textMerkBarang1">
+    <Component class="javax.swing.JTextField" name="textKodeBarang">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -112,6 +115,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Hapus"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonHapusBarangActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import Controllers.BarangController;
 import Views.EditBarang;
 import Models.BarangModel;
+import Views.Auth.Login;
 
 /**
  *
@@ -88,6 +89,11 @@ public class Home extends javax.swing.JFrame {
 
         buttonHapusBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonHapusBarang.setText("Hapus Barang");
+        buttonHapusBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonHapusBarangActionPerformed(evt);
+            }
+        });
 
         buttonEditBarang.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonEditBarang.setText("Edit Barang");
@@ -239,6 +245,8 @@ public class Home extends javax.swing.JFrame {
 
     private void buttonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogoutActionPerformed
         // TODO add your handling code here:
+        new Login().setVisible(true);
+        dispose();
     }//GEN-LAST:event_buttonLogoutActionPerformed
 
     private void buttonTambahBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahBarangActionPerformed
@@ -265,6 +273,11 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.filterBarangDESC(this);
     }//GEN-LAST:event_buttonFilterDESCActionPerformed
+
+    private void buttonHapusBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHapusBarangActionPerformed
+        // TODO add your handling code here:
+        new HapusBarang(this).setVisible(true);
+    }//GEN-LAST:event_buttonHapusBarangActionPerformed
 
     /**
      * @param args the command line arguments
