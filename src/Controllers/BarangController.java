@@ -260,7 +260,12 @@ public class BarangController {
         form.tabelModel.fireTableDataChanged();
         
         try {
-            ResultSet data = modelBarang.getDataBarangFilter(form.comboBoxFilter.getSelectedItem().toString(), "ASC");
+            String[] search = {
+                form.textCariBarang.getText(),
+                form.comboBoxFilterCariBarang.getSelectedItem().toString()
+            };
+            
+            ResultSet data = modelBarang.getDataBarangFilter(form.comboBoxFilter.getSelectedItem().toString(), "ASC", search);
         
             while( data.next() ) {
                 Object[] obj = new Object[8];
@@ -285,7 +290,12 @@ public class BarangController {
         form.tabelModel.fireTableDataChanged();
         
         try {
-            ResultSet data = modelBarang.getDataBarangFilter(form.comboBoxFilter.getSelectedItem().toString(), "DESC");
+            String[] search = {
+                form.textCariBarang.getText(),
+                form.comboBoxFilterCariBarang.getSelectedItem().toString()
+            };
+            
+            ResultSet data = modelBarang.getDataBarangFilter(form.comboBoxFilter.getSelectedItem().toString(), "DESC", search);
         
             while( data.next() ) {
                 Object[] obj = new Object[8];

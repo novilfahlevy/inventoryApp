@@ -171,17 +171,46 @@ public class BarangModel {
         return tambahDataSuccess;
     }
     
-    public ResultSet getDataBarangFilter(String filter, String ascOrDesc) {
+    public ResultSet getDataBarangFilter(String filter, String ascOrDesc, String[] search) {
         ResultSet result = null;
 
         String query = "SELECT `barang`.kode_barang, `barang`.merk, `jenis_barang`.nama AS jenis, `barang`.jumlah, `barang`.harga, `pemasok`.nama AS pemasok, `staff`.nama AS staff, DATE_FORMAT(`barang`.created_at, '%d/%m/%Y') AS created_at FROM `barang`, `jenis_barang`, `pemasok`, `staff`";
 
         query += " WHERE `jenis_barang`.id = `barang`.id_jenis AND";
         query += " `pemasok`.id = `barang`.id_pemasok AND";
-        query += " `staff`.id = `barang`.id_staff ORDER BY " + filter.toLowerCase() + " " + ascOrDesc;
+        query += " `staff`.id = `barang`.id_staff ";
+        
+        String keyword = search[0];
+        String _filter = search[1];
+        
+        switch( _filter ) {
+            case "Kode Barang" :
+                query += "AND `barang`.kode_barang = '" + keyword + "'";
+            break;
+                
+            case "Nama / Merk" :
+                query += "AND `barang`.merk LIKE '%" + keyword + "%'";
+            break;
+                
+            case "Pemasok" :
+                query += "AND `barang`.id_pemasok = (SELECT id FROM `pemasok` WHERE `pemasok`.nama LIKE '%" + keyword + "%')";
+            break;
+                
+            case "Harga" :
+                if( !keyword.equals("") ) query += "AND `barang`.harga = " + keyword;
+            break;
+                
+            case "Jumlah" :
+                if( !keyword.equals("") ) query += "AND `barang`.jumlah = " + keyword;
+            break;
+                
+            case "Staff" :
+                query += "AND `barang`.id_staff = (SELECT id FROM `staff` WHERE `staff`.nama LIKE '%" + keyword + "%')";
+            break;
+        }
 
         try {
-            result = (ResultSet) Koneksi.getKoneksi().createStatement().executeQuery(query);
+            result = (ResultSet) Koneksi.getKoneksi().createStatement().executeQuery(query + " ORDER BY " + filter.toLowerCase() + " " + ascOrDesc);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
