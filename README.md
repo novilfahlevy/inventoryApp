@@ -1,9 +1,11 @@
 # inventoryApp
 Projek Tugas Java Netbeans membuat Manajemen Inventaris Data Barang (Open Source).
+Dibuat untuk tugas mata pelajaran PBO SMK Negeri 7 Samarinda.
 
 ## Dibuat Dengan
 * Bahasa Pemrograman Java
 * [Netbeans](https://netbeans.org/) - Integrated Development Environment
+* [MVC](https://id.m.wikipedia.org/wiki/MVC) Pattern
 
 ## Pembuat
 * **Muhammad Rizki Maulidan** - *Programmer* - [mrizkimaulidan](https://github.com/mrizkimaulidan)
