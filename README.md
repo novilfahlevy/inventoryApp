@@ -15,11 +15,11 @@ Dibuat untuk tugas mata pelajaran PBO SMK Negeri 7 Samarinda.
 
 ## How To Use
 1. Download repo ini
-2. Taruh di folder Documents/NetBeansProject
+2. Taruh di folder Documents/NetBeansProjects
 3. Import database.sql ke phpmyadmin. [Buka disini](https://www.niagahoster.co.id/blog/cara-import-database-mysql/) jika belum tau cara import
 4. Buka Netbeans, Lalu pilih File > Open Project
 5. Cari dan pilih project inventoryApp
-6. Buka package Views, lalu run file Home
+6. Buka package Views.Auth, lalu run file Register
 7. Aplikasi sudah bisa digunakan
 
 ## Thanks to
