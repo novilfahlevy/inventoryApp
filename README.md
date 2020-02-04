@@ -25,4 +25,3 @@ Dibuat untuk tugas mata pelajaran PBO SMK Negeri 7 Samarinda.
 ## Thanks to
 * Stackoverflow
 * Google
-* Temen
